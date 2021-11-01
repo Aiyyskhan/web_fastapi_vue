@@ -2,10 +2,17 @@ version: "3.8"
 
 services:
 
-  back:
+  backend:
     build: ./services/back
     ports:
       - 5000:5000
     volumes:
       - ./services/back:/app
     command: uvicorn src.main:app --reload --host 0.0.0.0 --port 5000
+  frontend:
+    build: ./services/front
+    volumes:
+      - "./services/front:/app"
+      - "/app/node_modules"
+    ports:
+      - 8080:8080
