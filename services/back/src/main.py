@@ -5,8 +5,12 @@ from tortoise import Tortoise
 from src.database.register import register_tortoise
 from src.database.config import TORTOISE_ORM
 
-
+# разрешить схемам читать отношения между моделями
 Tortoise.init_models(["src.database.models"], "models")
+
+# src.routes импортируется после Tortoise.init_models. 
+# (https://stackoverflow.com/questions/65531387/tortoise-orm-for-python-no-returns-relations-of-entities-pyndantic-fastapi)
+from src.routes import users, notes
 
 app = FastAPI()
 
@@ -17,6 +21,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.include_router(users.router)
+app.include_router(notes.router)
 
 register_tortoise(app, config=TORTOISE_ORM, generate_schemas=False)
 
