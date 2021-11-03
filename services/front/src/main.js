@@ -11,6 +11,18 @@ axios.defaults.baseURL = "http://localhost:5000/";
 
 Vue.config.productionTip = false
 
+// при истечении срока токена пользователь выходит из системы и перенаправляется на страницу входа
+axios.interceptors.response.use(undefined, function (error) {
+  if (error) {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      store.dispatch('logOut');
+      return router.push('/login')
+    }
+  }
+});
+
 new Vue({
   router,
   store,
