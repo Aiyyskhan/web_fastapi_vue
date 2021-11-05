@@ -84,16 +84,29 @@ body {
 }
 
 .main {
-  grid-area: main;
   padding: 30px 15px;
-  display: grid;
-  grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
 }
 .sidebar {
-  grid-column: 2 / 3;
+  padding: 30px 15px;
+  margin: 0px 0px 30px 0px;
 }
 .content {
-  grid-column: 3 / 4;
+}
+
+@media (min-width: 992px) {
+  .main {
+    grid-area: main;
+    display: grid;
+    grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+  }
+  .sidebar {
+    grid-column: 2 / 3;
+    margin: 0;
+  }
+  .content {
+    grid-column: 3 / 4;
+    padding: 0px 0px 0px 30px;
+  }
 }
 
 .footer {

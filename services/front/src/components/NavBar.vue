@@ -56,6 +56,13 @@ a {
   font-size: 18px;
   text-decoration: none;
 }
+
+@media (max-width: 992px) {
+  .navbar__list {
+    display: none;
+  }
+}
+
 </style>
 
 
