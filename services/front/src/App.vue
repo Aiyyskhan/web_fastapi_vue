@@ -1,9 +1,38 @@
 <template>
   <div id="app">
-    <NavBar />
-    <div class="main container">
-      <router-view/>
-    </div>
+    <header class="header">
+      <a class="header__logo" href="/">Altan</a>
+      <NavBar />
+    </header>
+    
+    <main class="main">
+      <aside class="sidebar">
+        <nav class="sidebar__menu">
+          <ul class="sidebar__list">
+            <li>
+              <a href="" class="sidebar__link">Пункт меню</a>
+            </li>
+            <li>
+              <a href="" class="sidebar__link">Пункт меню</a>
+            </li>
+            <li>
+              <a href="" class="sidebar__link">Пункт меню</a>
+            </li>
+            <li>
+              <a href="" class="sidebar__link">Пункт меню</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      
+      <section class="content">
+        <router-view/>
+      </section>
+    </main>
+
+    <footer class="footer">
+
+    </footer>
   </div>
 </template>
 
@@ -16,6 +45,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+
+  display: grid;
 }
 .main {
   padding-top: 5em;
