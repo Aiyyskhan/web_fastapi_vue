@@ -5,43 +5,59 @@
       <span class="menu__toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar" id="navbarCollapse">
       
-      <ul v-if="isLoggedIn" class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Home</router-link>
+      <ul v-if="isLoggedIn" class="navbar__list">
+        <li class="navbar__item">
+          <router-link class="navbar__link" to="/">Home</router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/dashboard">Dashboard</router-link>
+        <li class="navbar__item">
+          <router-link class="navbar__link" to="/dashboard">Dashboard</router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/profile">My Profile</router-link>
+        <li class="navbar__item">
+          <router-link class="navbar__link" to="/profile">My Profile</router-link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" @click="logout">Log Out</a>
+        <li class="navbar__item">
+          <a class="navbar__link" @click="logout">Log Out</a>
         </li>
       </ul>
 
-      <ul v-else class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Home</router-link>
+      <ul v-else class="navbar__list me-auto mb-2 mb-md-0">
+        <li class="navbar__item">
+          <router-link class="navbar__link" to="/">Home</router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/register">Register</router-link>
+        <li class="navbar__item">
+          <router-link class="navbar__link" to="/register">Register</router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/login">Log In</router-link>
+        <li class="navbar__item">
+          <router-link class="navbar__link" to="/login">Log In</router-link>
         </li>
       </ul>
     </div>
   </nav>
 </template>
 
+
 <style scoped>
 a {
   cursor: pointer;
 }
+.menu {
+  align-items: center;
+  grid-column: 3 / 4;
+}
+.navbar__list {
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: end;
+}
+.navbar__link {
+  color: aliceblue;
+  font-size: 18px;
+  text-decoration: none;
+}
 </style>
+
 
 <script>
 export default {
