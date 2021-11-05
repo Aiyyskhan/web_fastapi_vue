@@ -43,6 +43,12 @@
   </header>
 </template>
 
+<style scoped>
+a {
+  cursor: pointer;
+}
+</style>
+
 <script>
 export default {
   name: 'NavBar',
@@ -59,9 +65,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-a {
-  cursor: pointer;
-}
-</style>
