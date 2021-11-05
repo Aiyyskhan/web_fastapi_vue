@@ -78,7 +78,8 @@ body {
   border-radius: 50%;
   background-color: aliceblue;
   text-decoration: none;
-  line-height: 40px;
+  text-align: center;
+  align-items: center;
   grid-column: 2 / 3;
 }
 
@@ -97,8 +98,18 @@ body {
 
 .footer {
   grid-area: footer;
+  display: grid;
+  grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+  padding: 15px;
+  align-items: center;
   background-color: #303942;
   color: aliceblue;
+}
+.footer__copy {
+  grid-column: 2 / 3;
+}
+.footer__text {
+  grid-column: 3 / 4;
 }
 
 </style>
