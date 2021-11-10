@@ -44,52 +44,6 @@
 </template>
 
 
-<style scoped>
-.header {
-  grid-area: header;
-  background-color: #303942;
-  display: grid;
-  align-items: center;
-  grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
-}
-.header__logo {
-  width: 150px;
-  height: auto;
-  padding: 10px;
-  align-items: center;
-  grid-column: 2 / 3;
-}
-.header__logo > img {
-  max-width: 100%;
-}
-
-a {
-  cursor: pointer;
-}
-.menu {
-  align-items: center;
-  grid-column: 3 / 4;
-}
-.navbar__list {
-  display: grid;
-  grid-auto-flow: column;
-  justify-items: end;
-}
-.navbar__link {
-  color: aliceblue;
-  font-size: 18px;
-  text-decoration: none;
-}
-
-@media (max-width: 992px) {
-  .navbar__list {
-    display: none;
-  }
-}
-
-</style>
-
-
 <script>
 export default {
   name: 'NavBar',
@@ -106,3 +60,8 @@ export default {
   },
 }
 </script>
+
+
+<style scoped>
+
+</style>
