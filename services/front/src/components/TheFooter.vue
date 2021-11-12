@@ -1,12 +1,7 @@
 <template>
-    <footer class="footer">
-      <div class="footer__copy">
-        Copyright, 2021
-      </div>
-      <div class="footer__text">
-        Lorem ipsum dolor sit amet.
-      </div>
-    </footer>
+    <v-footer :inset="true" style="justify-content:center; text-align: center" app>
+        <span>&copy; Altan 2020</span>
+      </v-footer>
 </template>
 
 <style>

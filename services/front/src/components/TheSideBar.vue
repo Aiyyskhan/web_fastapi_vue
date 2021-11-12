@@ -1,22 +1,17 @@
 <template>
-	<aside class="sidebar">
-    <nav class="sidebar__menu">
-      <ul class="sidebar__list">
-        <li>
-          <a href="" class="sidebar__link">Пункт меню</a>
-        </li>
-        <li>
-          <a href="" class="sidebar__link">Пункт меню</a>
-        </li>
-        <li>
-          <a href="" class="sidebar__link">Пункт меню</a>
-        </li>
-        <li>
-          <a href="" class="sidebar__link">Пункт меню</a>
-        </li>
-      </ul>
-    </nav>
-	</aside>
+	<v-sheet rounded="lg">
+    <v-list color="transparent">
+      <v-list-item
+        v-for="n in 5"
+        :key="n"
+        link
+      >
+        <v-list-item-content>
+          <v-list-item-title>Пункт меню {{ n }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+	</v-sheet>
 </template>
 
 <style>

@@ -1,5 +1,5 @@
-// import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
+import vuetify from '@/plugins/vuetify';
 import Vue from 'vue';
 
 import App from './App.vue';
@@ -25,6 +25,7 @@ axios.interceptors.response.use(undefined, function (error) {
 
 new Vue({
   router,
+  vuetify,
   store,
   render: h => h(App)
 }).$mount('#app')

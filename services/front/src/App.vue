@@ -1,16 +1,32 @@
 <template>
   <div id="app">
+    <v-app>
+      <Header />
     
-    <Header />
-    
-    <main class="main">
-      <SideBar />      
-      <section class="content">
-        <router-view/>
-      </section>
-    </main>
+      <v-main class="grey lighten-3">
+        <v-container>
+          <v-row>
+            <v-col cols="2">
+              <SideBar /> 
+            </v-col>
 
-    <Footer />
+            <v-col>
+              <v-sheet>
+                <router-view/>
+              </v-sheet>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+
+      <v-content>
+        <v-container fluid>
+          <router-view></router-view>
+        </v-container>
+      </v-content>
+
+      <Footer />
+    </v-app>
   </div>
 </template>
 
