@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer mt-5 p-4 text-white text-center">
     <div class="footer__copy">
       &copy;Copyright, 2021
     </div>
@@ -8,3 +8,9 @@
     </div>
   </footer>
 </template>
+
+<style>
+.footer {
+  background-color: #414141;
+}
+</style>

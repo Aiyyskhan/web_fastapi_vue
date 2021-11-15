@@ -3,7 +3,9 @@
     <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container">
 
-        <a class="navbar-brand" href="/">Altan</a>
+        <a class="navbar-brand" href="/">
+          <img src="@/assets/logo-altan-3-white.png" alt="Altan">
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -46,6 +48,9 @@
 <style scoped>
 .navbar {
   background: #006cb7;
+}
+.navbar-brand img {
+  max-width: 100px;
 }
 a {
   cursor: pointer;
