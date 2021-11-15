@@ -1,5 +1,6 @@
 <template>
   <div>
+    <SideBar />
     <section>
       <h1>Add new note</h1>
       <hr/><br/>
@@ -51,8 +52,13 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import SideBar from '@/components/SideBar.vue'
+
 export default {
   name: 'Dashboard',
+  components: {
+    SideBar
+  },
   data() {
     return {
       form: {

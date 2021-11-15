@@ -6,7 +6,7 @@
 
     <nav class="menu">
 
-      <button class="menu__toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="menu__toggler" type="button">
         <span class="menu__toggler-icon"></span>
       </button>
 
@@ -27,7 +27,7 @@
           </li>
         </ul>
 
-        <ul v-else class="navbar__list me-auto mb-2 mb-md-0">
+        <ul v-else class="navbar__list">
           <li class="navbar__item">
             <router-link class="navbar__link" to="/">Home</router-link>
           </li>

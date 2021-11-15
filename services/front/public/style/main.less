@@ -25,37 +25,51 @@ html, body {
 
 .header {
 	grid-area: header;
-	background-color: #303942;
+	background-color: #006cb7;
 	display: grid;
 	align-items: center;
 	grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
   .header__logo {
-    width: 150px;
+    // border: gainsboro solid 1px;
+    max-width: auto;
     height: auto;
     padding: 10px;
-    align-items: center;
+    display: grid;
+    justify-items: center;
     grid-column: 2 / 3;
     img {
-      max-width: 100%;
+      // border: rgb(14, 196, 69) solid 1px;
+      max-width: 150px;
     }
   }
 }
 
 .menu {
+  display: grid;
+  grid-auto-flow: column;
+  border: gainsboro solid 1px;
   align-items: center;
   grid-column: 3 / 4;
-  .navbar__list {
-    display: grid;
-    grid-auto-flow: column;
-    justify-items: end;
-    @media (max-width: 992px) {
-      display: none;
-    }
+  .menu__toggler {
+    visibility: hidden;
   }
-  .navbar__link {
-    color: aliceblue;
-    font-size: 18px;
-    text-decoration: none;
+  .navbar {
+    border: rgb(14, 196, 69) solid 1px;
+    .navbar__list {
+      // border: springgreen solid 1px;
+      display: grid;
+      grid-auto-flow: column;
+      justify-items: end;
+      list-style-type: none;
+      @media (max-width: 992px) {
+        display: none;
+      }
+    }
+    .navbar__link {
+      color: aliceblue;
+      font-size: 18px;
+      text-decoration: none;
+    }
   }
 }
 
@@ -91,7 +105,7 @@ html, body {
 	grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
 	padding: 15px;
 	align-items: center;
-	background-color: #303942;
+	background-color: #414141;
 	color: aliceblue;
   .footer__copy {
     grid-column: 2 / 3;

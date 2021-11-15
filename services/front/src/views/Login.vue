@@ -1,5 +1,6 @@
 <template>
   <section>
+    <SideBar />
     <form @submit.prevent="submit">
       <div class="mb-3">
         <label for="username" class="form-label">Username:</label>
@@ -16,8 +17,13 @@
 
 <script>
 import { mapActions } from 'vuex';
+import SideBar from '@/components/SideBar.vue'
+
 export default {
   name: 'Login',
+  components: {
+    SideBar
+  },
   data() {
     return {
       form: {

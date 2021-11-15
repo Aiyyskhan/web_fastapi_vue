@@ -4,7 +4,7 @@
     <Header />
     
     <main class="main">
-      <SideBar />      
+      <!-- <SideBar /> -->
       <section class="content">
         <router-view/>
       </section>
@@ -17,14 +17,14 @@
 
 <script>
 // @ is an alias to /src
-import Header from '@/components/TheHeader.vue'
-import SideBar from '@/components/TheSideBar.vue'
-import Footer from '@/components/TheFooter.vue'
+import Header from '@/components/Header.vue'
+// import SideBar from '@/components/TheSideBar.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   components: {
     Header,
-    SideBar,
+    // SideBar,
     Footer
   }
 }
