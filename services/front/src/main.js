@@ -1,4 +1,4 @@
-// import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import Vue from 'vue';
 
