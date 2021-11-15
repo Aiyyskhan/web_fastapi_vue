@@ -45,7 +45,7 @@
 
 <style scoped>
 .navbar {
-  background: rgb(37, 37, 250);
+  background: #006cb7;
 }
 a {
   cursor: pointer;

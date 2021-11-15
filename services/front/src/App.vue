@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <NavBar />
+    <Header />
     <div class="main container">
       <router-view/>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -25,11 +26,13 @@
 
 <script>
 // @ is an alias to /src
-import NavBar from '@/components/NavBar.vue'
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   components: {
-    NavBar
+    Header,
+    Footer
   }
 }
 </script>
