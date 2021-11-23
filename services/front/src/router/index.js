@@ -1,60 +1,118 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
 
 import store from '../store'
 
-import Home from '@/views/Home.vue'
-import Login from '@/views/Login.vue'
-import Register from '@/views/Register.vue'
-import Dashboard from '@/views/Dashboard.vue'
-import Profile from '@/views/Profile'
-import Note from '@/views/Note'
-import EditNote from '@/views/EditNote'
+// import Home from '@/views/Home.vue'
+// import Login from '@/views/Login.vue'
+// import Register from '@/views/Register.vue'
+// import Dashboard from '@/views/Dashboard.vue'
+// import Profile from '@/views/Profile'
+// import Note from '@/views/Note'
+// import EditNote from '@/views/EditNote'
 
 Vue.use(VueRouter);
+
+// const routes = [
+//   {
+//     path: '/',
+//     name: 'Home',
+//     component: Home
+//   },
+//   {
+//     path: '/register',
+//     name: 'Register',
+//     component: Register
+//   },
+//   {
+//     path: '/login',
+//     name: 'Login',
+//     component: Login,
+//   },
+//   {
+//     path: '/dashboard',
+//     name: 'Dashboard',
+//     component: Dashboard,
+//     meta: {requiresAuth: true},
+//   },
+//   {
+//     path: '/profile',
+//     name: 'Profile',
+//     component: Profile,
+//     meta: {requiresAuth: true},
+//   },
+//   {
+//     path: '/note/:id',
+//     name: 'Note',
+//     component: Note,
+//     meta: {requiresAuth: true},
+//     props: true,
+//   },
+//   {
+//     path: '/note/:id',
+//     name: 'EditNote',
+//     component: EditNote,
+//     meta: {requiresAuth: true},
+//     props: true,
+//   }
+// ]
 
 const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: {layout: "main"},
     component: Home
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login,
+    meta: {layout: "empty"},
+    component: () => import("../views/Login.vue")
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard,
-    meta: {requiresAuth: true},
+    path: '/register',
+    name: 'Register',
+    meta: {layout: "empty"},
+    component: () => import("../views/Register.vue")
   },
+  // {
+  //   path: '/categories',
+  //   name: 'Categories',
+  //   meta: {layout: "main"},
+  //   component: () => import("../views/Categories.vue")
+  // },
+  // {
+  //   path: '/history',
+  //   name: 'History',
+  //   meta: {layout: "main"},
+  //   component: () => import("../views/History.vue")
+  // },
+  // {
+  //   path: '/planning',
+  //   name: 'Planning',
+  //   meta: {layout: "main"},
+  //   component: () => import("../views/Planning.vue")
+  // },
   {
     path: '/profile',
     name: 'Profile',
-    component: Profile,
-    meta: {requiresAuth: true},
+    meta: {layout: "main"},
+    component: () => import("../views/Profile.vue")
   },
-  {
-    path: '/note/:id',
-    name: 'Note',
-    component: Note,
-    meta: {requiresAuth: true},
-    props: true,
-  },
-  {
-    path: '/note/:id',
-    name: 'EditNote',
-    component: EditNote,
-    meta: {requiresAuth: true},
-    props: true,
-  }
+  // {
+  //   path: '/record',
+  //   name: 'Record',
+  //   meta: {layout: "main"},
+  //   component: () => import("../views/Record.vue")
+  // },
+  // {
+  //   path: '/detail_record',
+  //   name: 'DetailRecord',
+  //   meta: {layout: "main"},
+  //   component: () => import("../views/DetailRecord.vue")
+  // }
 ]
 
 const router = new VueRouter({
