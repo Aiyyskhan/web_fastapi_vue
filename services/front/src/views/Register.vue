@@ -1,39 +1,121 @@
 <template>
   <section>
-    <form @submit.prevent="submit">
-      <div class="mb-3">
-        <label for="username" class="form-label">Username:</label>
-        <input type="text" name="username" v-model="user.username" class="form-control" />
+    <form class="card auth-card" @submit.prevent="submit">
+      <div class="card-content">
+        <span class="card-title">Зарегистрироваться</span>
+
+        <div class="input-field">
+          <input
+            id="name"
+            type="text"
+            v-model.trim="user.name"
+            :class="{invalid: $v.name.$dirty && !$v.name.required}"
+          >
+          <label for="name">Имя</label>
+          <small 
+            class="helper-text invalid"
+            v-if="$v.name.$dirty && !$v.name.required"
+          >Введите Ваше имя</small>
+        </div>
+
+        <div class="input-field">
+          <input
+            id="email"
+            type="text"
+            v-model.trim="user.email"
+            :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
+          >
+          <label for="email">Email</label>
+          <small 
+            class="helper-text invalid"
+            v-if="$v.email.$dirty && !$v.email.required"
+          >Поле Email не должно быть пустым</small>
+          <small 
+            class="helper-text invalid"
+            v-else-if="$v.email.$dirty && !$v.email.email"
+          >Пожалуйста, введите корректный Email</small>
+        </div>
+
+        <div class="input-field">
+          <input
+            id="password"
+            type="password"
+            v-model.trim="user.password"
+            :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
+          >
+          <label for="password">Пароль</label>
+          <small 
+            class="helper-text invalid"
+            v-if="$v.password.$dirty && !$v.password.required"
+          >Поле Пароль не должен быть пустым</small>
+          <small 
+            class="helper-text invalid"
+            v-else-if="$v.password.$dirty && !$v.password.minLength"
+          >Пароль должен быть не менее {{$v.password.$params.minLength.min}} символов</small>
+        </div>
+
+        <p>
+          <label>
+            <input type="checkbox" v-model="user.agree" />
+            <span>С правилами согласен</span>
+          </label>
+        </p>
+
       </div>
-      <div class="mb-3">
-        <label for="full_name" class="form-label">Full Name:</label>
-        <input type="text" name="full_name" v-model="user.full_name" class="form-control" />
+
+      <div class="card-action">
+        <div>
+          <button
+            class="btn waves-effect waves-light auth-submit"
+            type="submit"
+          >
+            Зарегистрироваться
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+
+        <p class="center">
+          Уже есть аккаунт?
+          <router-link to="/login">Войти!</router-link>
+        </p>
       </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password:</label>
-        <input type="password" name="password" v-model="user.password" class="form-control" />
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </section>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
+import {email, required, minLength} from "vuelidate/lib/validators"
+import M from 'materialize-css'
+
 export default {
   name: 'Register',
   data() {
     return {
       user: {
-        username: '',
-        full_name: '',
+        name: '',
+        email: '',
         password: '',
+        agree: false
       },
     };
   },
+	validations: {
+		name: {required},
+		email: {email, required},
+		password: {required, minLength: minLength(7)},
+		agree: {checked: v => v}
+	},
+	mounted() {
+		this.error("Test")
+	},
   methods: {
     ...mapActions(['register']),
     async submit() {
+      if (this.$v.$invalid) {
+				this.$v.$touch()
+				return
+			}
       try {
         await this.register(this.user);
         this.$router.push('/dashboard');
@@ -41,6 +123,12 @@ export default {
         throw 'Username already exists. Please try again.';
       }
     },
-  },
+		message(html) {
+			M.toast({html})
+		},
+		error(html) {
+			M.toast({html: `[Ошибка]: ${html}`})
+		}
+  }
 };
 </script>

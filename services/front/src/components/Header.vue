@@ -1,65 +1,89 @@
 <template>
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark">
-      <div class="container">
+<nav class="navbar lighten-1">
+  <div class="nav-wrapper">
+    <div class="navbar-left">
+      <a class="logo" href="/">
+        <img src="@/assets/logo-altan-3-white.png" alt="Altan">
+      </a>
+      <a href="#" @click.prevent="$emit('click')">
+        <i class="material-icons white-text">dehaze</i>
+      </a>
+      <span class="right white-text">{{date | date("date")}}</span>
+    </div>
 
-        <a class="navbar-brand" href="/">
-          <img src="@/assets/logo-altan-3-white.png" alt="Altan">
+    <ul class="right hide-on-small-and-down">
+      <li>
+        <a
+          class="dropdown-trigger white-text"
+          href="#"
+          data-target="dropdown"
+          ref="dropdown"
+        >
+        USER NAME
+        <i class="material-icons right">arrow_drop_down</i>
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          
-          <ul v-if="isLoggedIn" class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <router-link class="nav-link" to="/">Home</router-link>
+        <ul id='dropdown' v-if="isLoggedIn" class="dropdown-content">
+            <li>
+              <router-link class="black-text" to="/">
+                Home
+              </router-link>
             </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/dashboard">Dashboard</router-link>
+            <li>
+              <router-link class="black-text" to="/dashboard">Dashboard</router-link>
             </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/profile">My Profile</router-link>
+            <li>
+              <router-link class="black-text" to="/profile">
+                <i class="material-icons">account_circle</i>Профиль
+              </router-link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" @click="logout">Log Out</a>
-            </li>
-          </ul>
-
-          <ul v-else class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <router-link class="nav-link" to="/">Home</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/register">Register</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/login">Log In</router-link>
+            <li>
+              <a class="black-text" @click.prevent="logout">
+                <i class="material-icons">assignment_return</i>Выйти
+              </a>
             </li>
           </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+
+          <ul id='dropdown' v-else class="dropdown-content">
+            <li>
+              <router-link class="black-text" to="/">
+                Home
+              </router-link>
+            </li>
+            <li>
+              <router-link class="black-text" to="/register">Register</router-link>
+            </li>
+            <li>
+              <router-link class="black-text" to="/login">Log In</router-link>
+            </li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 </template>
 
-<style scoped>
-.navbar {
-  background: #006cb7;
-}
-.navbar-brand img {
-  max-width: 100px;
-}
-a {
-  cursor: pointer;
+<style lang="scss">
+.logo {
+	// border: 2px solid black;
+	display: flex;
+	max-width: 80px;
+	img {
+		width: 100%;
+	}
 }
 </style>
 
 <script>
+import M from 'materialize-css'
+
 export default {
   name: 'NavBar',
+	data: () => ({
+		date: new Date(),
+		interval: null,
+		dropdown: null
+	}),
   computed: {
     isLoggedIn: function() {
       return this.$store.getters.isAuthenticated;
@@ -71,5 +95,19 @@ export default {
       this.$router.push('/login');
     }
   },
+	mounted() {
+		this.interval = setInterval(() => {
+			this.date = new Date()
+		}, 1000)
+		this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
+			constrainWidth: false
+		})
+	},
+	beforeDestroy() {
+		clearInterval(this.interval);
+		if (this.dropdown && this.dropdown.destroy) {
+			this.dropdown.destroy()
+		}
+	}
 }
 </script>
