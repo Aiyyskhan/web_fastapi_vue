@@ -1,1 +1,3 @@
-# altan_web_1
+# web_fastapi_vue
+
+## FastAPI + Vue example
